@@ -100,7 +100,7 @@ code {
   text-transform: uppercase;
 }
 
-.demo-grid .col {
+.demo-grid .l-col {
   background: #888;
   border-radius: .1rem;
   color: #eee;
@@ -114,7 +114,7 @@ code {
   text-transform: uppercase;
 }
 
-.demo-grid .flex-grid__col {
+.demo-grid .l-flex-grid__col {
   background:  #888;
   border-radius: .2rem;
   color: #eee;

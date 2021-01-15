@@ -81,12 +81,33 @@ gulp.task('compileSass', function () {
     .pipe(bs.reload({ stream: true }))
 })
 
-// Build CSS - unminified
-gulp.task('build', function () {
-  gulp.start([ 'compileSass' ])
+gulp.task('compileGridSass', function () {
+  return gulp
+    .src('./src/sass/grid.scss')
+    .pipe(
+      sass({ style: 'expanded', quiet: false, cacheLocation: '.sass-cache' })
+    )
+    .pipe(sass())
+    .pipe(autoprefixer('last 1 version'))
+    .pipe(gulp.dest('./dist'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(minify({ keepSpecialComments: 0 }))
+    .pipe(header(banner, { pkg: pkg }))
+    .pipe(gulp.dest('./dist'))
+    .pipe(
+      size({
+        gzip: true
+      })
+    )
+    .pipe(bs.reload({ stream: true }))
 })
 
-gulp.task('browser-sync', [ 'compileSass' ], function () {
+// Build CSS - unminified
+gulp.task('build', function () {
+  gulp.start([ 'compileSass', 'compileGridSass' ])
+})
+
+gulp.task('browser-sync', [ 'compileSass', 'compileGridSass' ], function () {
   bs.init({
     server: {
       baseDir: './docs'
@@ -97,7 +118,7 @@ gulp.task('browser-sync', [ 'compileSass' ], function () {
 // Watch Files For Changes
 gulp.task('watch', [ 'browser-sync' ], function () {
   // gulp.watch(files.lint, ['scripts']);
-  gulp.watch(files.sass, [ 'compileSass' ]).on('change', bs.reload)
+  gulp.watch(files.sass, [ 'compileSass', 'compileGridSass' ]).on('change', bs.reload)
   gulp.watch(files.home).on('change', bs.reload)
 })
 
@@ -111,5 +132,5 @@ gulp.task('clean', function () {
 
 // Default Task
 gulp.task('default', function () {
-  gulp.start([ 'compileSass' ])
+  gulp.start([ 'compileSass', 'compileGridSass' ])
 })

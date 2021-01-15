@@ -4,19 +4,19 @@ Grid
 
 This is a grid made using flexbox. Use the ff classes to setup a flexbox grid:
 
-.flex-grid               - Grid is always shown, even in small screens
+.l-flex-grid               - Grid is always shown, even in small screens
 
-// Modifier classes for `.flex-grid`.
+// Modifier classes for `.l-flex-grid`.
 // Use these classes to set the screen width when the grid is visible.
 
 // Grid Modifiers
-.flex-grid--md           - Grid starts at medium sized screens
-.flex-grid--lg           - Grid starts at large and up screens
+.l-flex-grid--md           - Grid starts at medium sized screens
+.l-flex-grid--lg           - Grid starts at large and up screens
 
 
-Use `.flex-grid__col` to define a column inside a `.flex-grid` grid.
-Direct children of `.flex-grid` are columns with the class,
-`.flex-grid__col`
+Use `.l-flex-grid__col` to define a column inside a `.l-flex-grid` grid.
+Direct children of `.l-flex-grid` are columns with the class,
+`.l-flex-grid__col`
 
 Markup:
 <div class="demo-grid">
@@ -42,42 +42,42 @@ Markup:
 
 // Column modifiers
 
-.flex-grid__col--sm           - half the width of default column
-.flex-grid__col--lg           - double the width of default column
-.flex-grid__col--fixed-width  - fixed-width column (default = 200px)
+.l-flex-grid__col--sm           - half the width of default column
+.l-flex-grid__col--lg           - double the width of default column
+.l-flex-grid__col--fixed-width  - fixed-width column (default = 200px)
 */
 
 // row
-.flex-grid {
+.l-flex-grid {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
 }
 
 // columns
-.flex-grid > * {
+.l-flex-grid > * {
   flex: 1;
   // padding-left: 1rem;
   // padding-right: 1rem;
 
   //default column width
-  &.flex-grid__col {
+  &.l-flex-grid__col {
     flex-grow: 4;
     margin-left: $flex-grid--column-margin;
   }
 
   // fixed-width column (default = 200px)
-  &.flex-grid__col--fixed-width {
+  &.l-flex-grid__col--fixed-width {
     flex: 0 0 $flex-grid__column--fixed-width;
   }
 
   // half the width of default column
-  &.flex-grid__col--sm {
+  &.l-flex-grid__col--sm {
     flex-grow: 2;
   }
 
   // double the width of default column
-  &.flex-grid__col--lg{
+  &.l-flex-grid__col--lg{
     flex-grow: 8;
   }
 
@@ -91,15 +91,15 @@ Markup:
 }
 
 @media (max-width: 549px){
-  .flex-grid--md {
+  .l-flex-grid--md {
     display: block;
   }
 
-  .flex-grid--md > *{
+  .l-flex-grid--md > *{
     padding-left: 0;
     padding-right: 0;
 
-    &.flex-grid__col {
+    &.l-flex-grid__col {
       margin-left: 0;
     }
 
@@ -107,15 +107,15 @@ Markup:
 }
 
 @media (max-width: 959px){
-  .flex-grid--lg{
+  .l-flex-grid--lg{
     display: block;
   }
 
-  .flex-grid--lg > * {
+  .l-flex-grid--lg > * {
     padding-left: 0;
     padding-right: 0;
 
-    &.flex-grid__col {
+    &.l-flex-grid__col {
       margin-left: 0;
     }
   }
